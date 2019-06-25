@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:p="http://www.springframework.org/schema/p" 
+	   xmlns:task="http://www.springframework.org/schema/task"
+	   xmlns:context="http://www.springframework.org/schema/context"
+   xsi:schemaLocation=
+	   "http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+		http://www.springframework.org/schema/task 
+    	http://www.springframework.org/schema/task/spring-task.xsd">   
+	   <!-- web.xml中shiro的filter对应的bean -->
+<!-- Shiro 的Web过滤器 -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager"/>
+		<!-- loginUrl认证提交地址，如果没有认证将会请求此地址进行认证，请求此地址将由formAuthenticationFilter进行表单认证 -->
+		<property name="loginUrl" value="/refuse" />
+		<!-- 通过unauthorizedUrl指定没有权限操作时跳转页面-->
+		<!--  property name="unauthorizedUrl" value="/refuse" /-->
+		<!-- 过虑器链定义，从上向下顺序执行，一般将/**放在最下边 -->
+		<property name="filterChainDefinitions">
+			<value>
+			/websocket=anon
+			/login=anon
+			/logout= logout
+			 /** = authc
+			<!--/ws=anon
+			/login=anon
+		    /logout= logout
+	        /**=authc  -->
+			      <!--  /login=anon
+			      /refuse=anon
+			      /logout= logout
+			     /** = authc-->
+			    <!-- / = authc-->
+				<!-- /** = authc 所有url都必须认证通过才可以访问-->
+				<!-- /** = anon所有url都可以匿名访问 -->
+				
+			</value>
+		</property>
+	</bean>
+	<bean id="customRealm" class="com.gznu.element.realm.CustomRealm1"></bean>
+<!-- securityManager安全管理器 -->
+<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+	<property name="realm" ref="customRealm"/>
+	<!-- 注入缓存管理器-->
+		 <!--property name="cacheManager" ref="cacheManager"/-->
+	<!-- 注入session管理器 -->
+	<property name="sessionManager" ref="sessionManager"/>
+</bean>
+<!-- 缓存管理器 -->
+<!--bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+    	<property name="cacheManagerConfigFile" value="classpath:shiro-ehcache.xml"/>
+    </bean -->
+<!-- realm -->
+
+   <!-- 会话管理器 -->
+    <bean id="sessionManager" class="com.gznu.element.SessionManager.MySessionManager">
+        <!-- session的失效时长，单位毫秒 -->
+        <property name="globalSessionTimeout" value="36000000"/>
+        <!-- 删除失效的session -->
+        <property name="deleteInvalidSessions" value="true"/>
+        <!-- 定义Session可以进行序列化的工具类-->
+        <property name="sessionDAO" ref="sessionDAO"/>
+     
+       <property name="sessionValidationSchedulerEnabled" value="true"/> 
+        </bean>
+  <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">    	
+	    <property name="activeSessionsCacheName" value="shiro-activeSessionCache"/>
+	    <property name="sessionIdGenerator" ref="sessionIdGenerator"/> 
+	</bean> 
+ <bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator" />
+ </beans>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         id="WebApp_ID" version="3.0">
+
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+
+    <absolute-ordering/>
+    <!-- shiro过虑器，DelegatingFilterProx会从spring容器中找shiroFilter -->
+    <!-- 配置文件位置 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:applicationContext-transaction.xml,
+            classpath:applicationContext.xml,
+            classpath:applicationContext_shiro.xml
+        </param-value>
+
+    </context-param>
+    <!-- 监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!-- springmvc前端控制器 -->
+    <servlet>
+        <servlet-name>springmvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- contextConfigLocation配置springmvc加载的配置文件（配置处理器，适配器）
+          如果不配置contextConfigLocation,默认加载的是/WEB-INF/serlvet名称-serlvet.xml
+        -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:springmvc-servlet.xml</param-value>
+        </init-param>
+        <!-- 标记容器是否在启动的时候就加载这个servlet,下面数值大于等于0都可，正数的值越小，启动该servlet的优先级越高 -->
+        <load-on-startup>1</load-on-startup>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>springmvc</servlet-name>
+        <!-- 此处是代码访问网页的url格式 -->
+        <!-- 第一种:*.action,表示所有以.action结尾的url都由DispatcherServlet解析
+                     第二种:/,所有的访问地址都由.DispatcherServlet进行解析，对于静态的解析需要配置不然.DispatcherServlet进行解析
+                     使用此种方式可以实现RESTful风格的url
+             第三种：/*，这样配置不对，使用这种配置，最终要转发一个jsp页面时，任然要交给.DispatcherServlet解析jsp地址，不能根据jsp页面找到handler，会报错-->
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <!-- 跨域处理器 -->
+    <filter>
+        <filter-name>CrossFilter</filter-name>
+        <filter-class>com.gznu.element.filter.CrossFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CrossFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- 会话延时，表示同一个用户在30分钟内再次进入时，就提示已经登录了 -->
+    <!--session-config>
+		<session-timeout>1</session-timeout>
+</session-config-->
+    <!-- 编码过滤器 -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HiddenHttpMethodFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+    <!--错误页面-->
+<!--    <error-page>-->
+<!--        <error-code>403</error-code>-->
+<!--        <location>admin/err/403.jsp</location>-->
+<!--    </error-page>-->
+<!--    <error-page>-->
+<!--        <error-code>404</error-code>-->
+<!--        <location>admin/err/404.jsp</location>-->
+<!--    </error-page>-->
+<!--    <error-page>-->
+<!--        <error-code>500</error-code>-->
+<!--        <location>admin/err/500.jsp</location>-->
+<!--    </error-page>-->
+
+</web-app>
