@@ -13,11 +13,22 @@
 %>
 <head>
     <title>多彩贵州后台管理系统</title>
+    <link rel="stylesheet" href="../../style/build/css/form.css">
 </head>
 <body>
 <div>
-    <form action="<%=basePath%>/delicacy/del">
-        景点ID:&nbsp;<input type="text" name="delicacyId">&nbsp;<input type="submit" value="删除">
+    <form action="<%=basePath%>/delicacy/del" method="post" class="basic-grey">
+        <h1>Contact Form
+            <span>Please fill all the texts in the fields.</span>
+        </h1>
+        <label>
+            <span>美食ID</span>
+            <input id="delicacyId" type="text" name="delicacyId" placeholder="输入要删除的美食ID"/>
+        </label>
+        <label>
+            <span>&nbsp;</span>
+            <input type="submit" class="button" value="DELETE"/>
+        </label>
     </form>
 </div>
 <script>

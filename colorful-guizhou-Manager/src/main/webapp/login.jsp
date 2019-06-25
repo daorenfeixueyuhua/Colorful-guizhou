@@ -33,7 +33,8 @@
         <form class="login form" action="<%=basePath%>/login" method="post">
             <div class="group">
                 <div class="group-ipt email">
-                    <input type="text" name="username" id="email" class="ipt" value="${username}" placeholder="帐号同密码 admin" required>
+                    <input type="text" name="username" id="email" class="ipt" value="${username}"
+                           placeholder="帐号同密码 admin" required>
                 </div>
                 <div class="group-ipt password">
                     <input type="password" name="password" id="password" class="ipt" placeholder="输入您的登录密码" required>
@@ -62,53 +63,6 @@
         if (msg != "") {
             layui.layer.msg(msg, {offset: 70, shift: 0});
         }
-        // var validate;
-        // //极验证
-        // layui.$.get("/login/geetest.html?t=" + (new Date()).getTime(), function (data) {
-        //     initGeetest({
-        //         gt: data.gt,
-        //         challenge: data.challenge,
-        //         new_captcha: data.new_captcha,
-        //         product: "popup",
-        //         offline: !data.success
-        //     }, handlerEmbed);
-        // }, "json");
-        // var handlerEmbed = function (captchaObj) {
-        //     layui.$("#embed-submit").click(function (e) {
-        //         validate = captchaObj.getValidate();
-        //         if (!validate) {
-        //             layui.layer.msg('请先完成验证', {offset: 70, shift: 0});
-        //             e.preventDefault();
-        //         }
-        //     });
-        //     captchaObj.appendTo("#embed-captcha");
-        //     captchaObj.onReady(function () {
-        //         layui.$("#wait").removeClass('show').addClass('hide');
-        //     });
-
-        //     layui.$(document).ajaxStart(function () {
-        //         loading = layui.layer.load(2);
-        //         layui.$("#embed-submit").prop('disabled', true);
-        //     }).ajaxStop(function () {
-        //         layui.$("#embed-submit").prop('disabled', false);
-        //         layui.layer.close(loading);
-        //     });
-        // layui.$('form').submit(function () {
-        //     var self = layui.$(this);
-        //     layui.$.post(self.attr("action"), self.serialize(), function (data) {
-        //         if (data.code !== 1) {
-        //             layui.layer.msg(data.msg, {offset: 70, shift: 0});
-        //             captchaObj.reset();
-        //             return false;
-        //         }
-        //         layui.layer.msg(data.msg, {offset: 70, shift: 0});
-        //         setTimeout(function () {
-        //             window.location.href = data.url;
-        //         }, 1000);
-        //     });
-        //     return false;
-        // });
-        // };
     });
 </script>
 

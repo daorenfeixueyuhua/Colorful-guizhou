@@ -13,11 +13,22 @@
 %>
 <head>
     <title>多彩贵州后台管理系统</title>
+    <link rel="stylesheet" href="../../style/build/css/form.css">
 </head>
 <body>
 <div>
-    <form action="<%=basePath%>/region/del">
-        地区ID:&nbsp;<input type="text" name="regionID">&nbsp;<input type="submit" value="删除">
+    <form action="<%=basePath%>/region/del" method="post" class="basic-grey">
+        <h1>Contact Form
+            <span>Please fill all the texts in the fields.</span>
+        </h1>
+        <label>
+            <span>地区ID</span>
+            <input id="regionID" type="text" name="regionID" placeholder="输入要删除的地区ID"/>
+        </label>
+        <label>
+            <span>&nbsp;</span>
+            <input type="submit" class="button" value="DELETE"/>
+        </label>
     </form>
 </div>
 <script>

@@ -13,14 +13,31 @@
 %>
 <head>
     <title>多彩贵州后台管理系统</title>
+    <link rel="stylesheet" href="../../style/build/css/form.css">
 </head>
 <body>
 <div>
-    <form action="<%=basePath%>/region/update" method="post">
-        地区ID:&nbsp;<input type="text" name="regionId"><br>
-        地区名称:&nbsp;<input type="text" name="regionName"><br>
-        上级地区ID:&nbsp;<input type="text" name="superRegionId"><br>
-        <input type="submit" value="修改">&nbsp;<input type="reset" value="取消">
+    <form action="<%=basePath%>/region/update" method="post" class="basic-grey">
+        <h1>Contact Form
+            <span>Please fill all the texts in the fields.</span>
+        </h1>
+        <label>
+            <span>地区ID:</span>
+            <input id="regionId" type="text" name="regionId" placeholder="景点ID"/>
+        </label>
+
+        <label>
+            <span>地区名称:&nbsp;</span>
+            <input id="regionName" type="text" name="regionName" placeholder="景点类型"/>
+        </label>
+        <label>
+            <span>上级地区ID:</span>
+            <input id="superRegionId" type="text" name="superRegionId" placeholder="输出入该景点所在地地区ID">
+        </label>
+        <label>
+            <span>&nbsp;</span>
+            <input type="submit" class="button" value="提交"/>
+        </label>
     </form>
 </div>
 </body>

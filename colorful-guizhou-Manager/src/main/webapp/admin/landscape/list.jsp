@@ -14,19 +14,23 @@
 %>
 <head>
     <title>多彩贵州后台管理系统</title>
+    <link rel="stylesheet" href="../../style/build/css/table.css" media="all">
 </head>
 <body>
-<div>
-    <form action="<%=basePath%>/landscape/showAll" method="get">
-        第<input type="text" name="currentPage" value="${data.currentPage}">页&nbsp;每页 <input type="text" name="pageSize"
-                                                                                            value="${data.pageSize}">
-        条数据&nbsp;<input
-            type="submit" value="查询">
+<div align="center">
+    <form name="pageForm" action="<%=basePath%>/landscape/showAll" method="get">&nbsp;
+        <span>第</span>
+        <input type="text" name="currentPage" value="${data.currentPage==null?1:data.currentPage}" style="width:40px;">
+        <span>页</span>
+        <input class="page-last" type="submit" value="上一页" onclick="lastPage()">
+        <input class="page-next" type="submit" value="下一页" onclick="nextPage()">
+        <span>当前页数：</span><input name="pageSize" value="10" style="width:30px;" readonly>
+        <input type="submit" value="查询">&nbsp;&nbsp;&nbsp;
     </form>
 </div>
 
 <div class="showInfos">
-    <table>
+    <table id="table-3">
         <thead>
         <tr>
             <td>景点ID</td>
@@ -52,6 +56,7 @@
     </table>
 </div>
 </body>
+<script src="../../style/build/js/resach.js"></script>
 <script>
     <%--    使用该处信息提示 --%>
     var msg = '${msg}';

@@ -13,17 +13,43 @@
 %>
 <head>
     <title>多彩贵州后台管理系统</title>
+    <link rel="stylesheet" href="../../style/build/css/form.css">
 </head>
 <body>
 <div>
-    <form action="<%=basePath%>/delicacy/add" method="post">
-        美食ID:&nbsp;<input type="text" name="delicacyId"><br>
-        美食类型:&nbsp;<input type="text" name="delicacyType"><br>
-        美食名称:&nbsp;<input type="text" name="delicacyName"><br>
-        所属地区ID:&nbsp;<input type="text" name="regionId"><br>
-        价格:&nbsp;<input type="text" name="price"><br>
-        美食介绍:&nbsp;<input type="text" name="introduction"><br>
-        <input type="submit" value="提交">&nbsp;<input type="reset" value="取消">
+    <form action="<%=basePath%>/delicacy/add" method="post" class="basic-grey">
+        <h1>Contact Form
+            <span>Please fill all the texts in the fields.</span>
+        </h1>
+        <label>
+            <span>美食ID:</span>
+            <input id="delicacyId" type="text" name="delicacyId" placeholder="美食ID"/>
+        </label>
+
+        <label>
+            <span>美食类型:</span>
+            <input id="delicacyType" type="text" name="delicacyType" placeholder="美食类型"/>
+        </label>
+        <label>
+            <span>美食名称:</span>
+            <textarea id="delicacyName" name="delicacyName" placeholder="美食名称"></textarea>
+        </label>
+        <label>
+            <span>所属地区ID:</span>
+            <input type="text" name="regionId" placeholder="输出入该美食所在地地区ID">
+        </label>
+        <label>
+            <span>价格:</span>
+            <input type="text" name="price" placeholder="美食售卖价格">
+        </label>
+        <label>
+            <span>美食介绍:</span>
+            <textarea id="introduction" name="introduction" placeholder="美食简介"></textarea>
+        </label>
+        <label>
+            <span>&nbsp;</span>
+            <input type="submit" class="button" value="提交"/>
+        </label>
     </form>
 </div>
 </body>

@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="style/plugins/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="style/plugins/font-awesome/css/font-awesome.min.css" media="all">
     <link rel="stylesheet" href="style/build/css/app.css" media="all">
+
     <link rel="stylesheet" href="style/build/css/themes/green.css" media="all">
 </head>
 <body>
@@ -79,38 +80,39 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;"><i class="fa fa-plug" aria-hidden="true"></i><span> VIP信息管理</span></a>
+                    <a class="" href="javascript:;"><i class="fa fa-plug"
+                                                       aria-hidden="true"></i><span> VIP信息管理</span></a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" kit-target
-                               data-options="{url:'/admin/user/list.jsp',icon:'&#xe658;',title:'信息显示',id:'7'}"><i
-                                    class="layui-icon">&#xe658;</i><span> VIP信息显示</span></a>
+                            <a href="javascript:;" data-url="admin/user/list.jsp" data-ico="&#xe658;"
+                               data-title="信息显示"
+                               kit-target data-id="5"><i class="layui-icon">&#xe614;</i>VIP信息显示</a>
                         </dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;" data-url="/components/table/table.html" data-name="美食" kit-loader><i
-                            class="fa fa-plug" aria-hidden="true"></i><span> 美食信息管理</span></a>
+                    <a href="javascript:;" data-url="/views/form.html" data-name="form" kit-loader><i class="fa fa-plug"
+                                                                                                      aria-hidden="true"></i><span> 美食信息管理</span></a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" kit-target
-                               data-options="{url:'/admin/delicacy/add.jsp',icon:'&#xe6c6;',title:'信息新增',id:'1'}">
+                               data-options="{url:'admin/delicacy/add.jsp',icon:'&#xe6c6;',title:'信息新增',id:'6'}">
                                 <i class="layui-icon">&#xe6c6;</i><span> 美食信息新增</span></a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="/admin/delicacy/del.jsp" data-icon="fa-user"
+                            <a href="javascript:;" data-url="admin/delicacy/del.jsp" data-icon="fa-user"
                                data-title="信息删除" kit-target
-                               data-id='2'><i class="fa fa-user" aria-hidden="true"></i><span> 美食信息删除</span></a>
+                               data-id='7'><i class="fa fa-user" aria-hidden="true"></i><span> 美食信息删除</span></a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="/admin/delicacy/list.jsp" data-icon="&#xe628;"
+                            <a href="javascript:;" data-url="admin/delicacy/list.jsp" data-icon="&#xe628;"
                                data-title="信息查询" kit-target
-                               data-id='3'><i class="layui-icon">&#xe628;</i><span> 美食信息显示</span></a>
+                               data-id='8'><i class="layui-icon">&#xe628;</i><span> 美食信息显示</span></a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="/admin/delicacy/update.jsp" data-icon="&#xe614;"
+                            <a href="javascript:;" data-url="admin/delicacy/update.jsp" data-icon="&#xe614;"
                                data-title="信息修改"
-                               kit-target data-id='4'><i class="layui-icon">&#xe614;</i><span> 美食信息修改</span></a>
+                               kit-target data-id='9'><i class="layui-icon">&#xe614;</i><span> 美食信息修改</span></a>
                         </dd>
                     </dl>
                 </li>
@@ -120,23 +122,23 @@
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" kit-target
-                               data-options="{url:'admin/landscape/add.jsp',icon:'&#xe6c6;',title:'信息新增',id:'1'}">
+                               data-options="{url:'admin/landscape/add.jsp',icon:'&#xe6c6;',title:'信息新增',id:'10'}">
                                 <i class="layui-icon">&#xe6c6;</i><span> 景点信息新增</span></a>
                         </dd>
                         <dd>
                             <a href="javascript:;" data-url="admin/landscape/del.jsp" data-icon="fa-user"
                                data-title="信息删除" kit-target
-                               data-id='2'><i class="fa fa-user" aria-hidden="true"></i><span> 景点信息删除</span></a>
+                               data-id='11'><i class="fa fa-user" aria-hidden="true"></i><span> 景点信息删除</span></a>
                         </dd>
                         <dd>
                             <a href="javascript:;" data-url="admin/landscape/list.jsp" data-icon="&#xe628;"
                                data-title="信息查询" kit-target
-                               data-id='3'><i class="layui-icon">&#xe628;</i><span> 景点信息显示</span></a>
+                               data-id='12'><i class="layui-icon">&#xe628;</i><span> 景点信息显示</span></a>
                         </dd>
                         <dd>
                             <a href="javascript:;" data-url="admin/landscape/update.jsp" data-icon="&#xe614;"
                                data-title="信息修改"
-                               kit-target data-id='4'><i class="layui-icon">&#xe614;</i><span> 景点信息修改</span></a>
+                               kit-target data-id='13'><i class="layui-icon">&#xe614;</i><span> 景点信息修改</span></a>
                         </dd>
                     </dl>
                 </li>
@@ -159,7 +161,19 @@
     </div>
 </div>
 </body>
-<script src="style/plugins/layui/layui.js"></script>
+<script type="text/javascript" src="<%=basePath%>style/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src='<%=basePath%>style/plugins/layui/particles.js'></script>
+<script type="text/javascript" src='<%=basePath%>style/plugins/layui/background.js'></script>
+<script type="text/javascript" src="<%=basePath%>style/plugins/layui/gt.js"></script>
+<script>
+    layui.use(['jquery', 'layer'], function () {
+
+        var msg = '${msg}';
+        if (msg != "") {
+            layui.layer.msg(msg, {offset: 70, shift: 0});
+        }
+    });
+</script>
 <script>
     var message;
     layui.config({
