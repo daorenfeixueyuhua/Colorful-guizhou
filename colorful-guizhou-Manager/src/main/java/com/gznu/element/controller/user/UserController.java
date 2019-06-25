@@ -21,6 +21,7 @@ public class UserController {
         try {
             data = userService.findAllUser(query);
             model.addAttribute("data", data);
+            model.addAttribute("msg", "操作成功");
         } catch (RuntimeException e) {
             model.addAttribute("msg", "无数据");
         }

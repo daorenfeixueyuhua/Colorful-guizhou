@@ -98,17 +98,17 @@
 
 
     <!--错误页面-->
-<!--    <error-page>-->
-<!--        <error-code>403</error-code>-->
-<!--        <location>admin/err/403.jsp</location>-->
-<!--    </error-page>-->
-<!--    <error-page>-->
-<!--        <error-code>404</error-code>-->
-<!--        <location>admin/err/404.jsp</location>-->
-<!--    </error-page>-->
-<!--    <error-page>-->
-<!--        <error-code>500</error-code>-->
-<!--        <location>admin/err/500.jsp</location>-->
-<!--    </error-page>-->
+    <error-page>
+        <error-code>403</error-code>
+        <location>/admin/err/403.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/admin/err/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/admin/err/500.jsp</location>
+    </error-page>
 
 </web-app>

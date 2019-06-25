@@ -57,11 +57,4 @@
 </div>
 </body>
 <script src="../../style/build/js/resach.js"></script>
-<script>
-    <%--    使用该处信息提示 --%>
-    var msg = '${msg}';
-    if (msg != "") {
-        alert(msg);
-    }
-</script>
 </html>

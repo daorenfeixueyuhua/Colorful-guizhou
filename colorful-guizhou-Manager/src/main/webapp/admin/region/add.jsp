@@ -41,6 +41,7 @@
     </form>
 </div>
 </body>
+<script src="../../style/build/js/resach.js"></script>
 <script>
     var msg = '${msg}';
     if (msg != "") {

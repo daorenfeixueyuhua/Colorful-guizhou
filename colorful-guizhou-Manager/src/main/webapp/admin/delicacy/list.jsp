@@ -57,12 +57,5 @@
     </table>
 </div>
 </body>
-<script>
-    <%--    使用该处信息提示 --%>
-    var msg = '${msg}';
-    if (msg != "") {
-        alert(msg);
-    }
-</script>
 <script src="../../style/build/js/resach.js"></script>
 </html>

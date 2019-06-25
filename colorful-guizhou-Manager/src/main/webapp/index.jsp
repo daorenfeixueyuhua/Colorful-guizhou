@@ -167,13 +167,14 @@
 <script type="text/javascript" src="<%=basePath%>style/plugins/layui/gt.js"></script>
 <script>
     layui.use(['jquery', 'layer'], function () {
-
         var msg = '${msg}';
         if (msg != "") {
             layui.layer.msg(msg, {offset: 70, shift: 0});
         }
     });
 </script>
+
+
 <script>
     var message;
     layui.config({
@@ -188,15 +189,6 @@
         app.set({
             type: 'iframe'
         }).init();
-        $('#pay').on('click', function () {
-            layer.open({
-                title: false,
-                type: 1,
-                content: '<img src="style/build/images/pay.png" />',
-                area: ['500px', '250px'],
-                shadeClose: true
-            });
-        });
     });
 </script>
 </html>

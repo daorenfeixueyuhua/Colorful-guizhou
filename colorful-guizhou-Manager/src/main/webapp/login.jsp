@@ -49,7 +49,7 @@
 </div>
 
 <div class="footer">
-    <p>© 2018 <a href="http://www.openkit.cc">openkit.cc </a></p>
+    <p>© 2019</p>
 </div>
 
 <script type="text/javascript" src="<%=basePath%>style/plugins/layui/layui.js" charset="utf-8"></script>
@@ -58,7 +58,6 @@
 <script type="text/javascript" src="<%=basePath%>style/plugins/layui/gt.js"></script>
 <script>
     layui.use(['jquery', 'layer'], function () {
-
         var msg = '${msg}';
         if (msg != "") {
             layui.layer.msg(msg, {offset: 70, shift: 0});
